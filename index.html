@@ -3,13 +3,17 @@
     <head>
       <title> Number Guessing Game </title>
       <link href="styles.css" rel="stylesheet" type="text/css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
+      <div class="background">
       <div class="box">
         <div class="inner">
           <h1> Number Guessing Game </h1>
           <p class="intro"> We have selected a number between 1 and 100. Try to guess the number in
-            10 tries or less. We'll tell you if your guess is higher or lower than our number.
+            7 tries or less. We'll tell you if your guess is higher or lower than our number.
             Good luck! </p>
           <label for='guess'> Enter a guess: </label><br>
           <input type="text" id="guessInput">
@@ -22,6 +26,7 @@
             <p id="turnsLeft"></p>
           </div>
         </div>
+      </div>
       </div>
       <script src="number.js"> </script>
     </body>

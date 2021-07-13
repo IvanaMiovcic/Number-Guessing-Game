@@ -8,15 +8,17 @@ const turnsLeft = document.getElementById('turnsLeft')
 const warning = document.getElementById('warning')
 
 
-var randomNumber = Math.floor(Math.random() * 99) + 1;
-var guessCount = 10
+var randomNumber = Math.floor(Math.random() * 101);
+var guessCount = 7
 var alreadyGuessed = []
 
 
 function logGuess() {
   let userGuess = guessInput.value
-  if (isNaN(userGuess) || (userGuess > 100) || (userGuess < 1)) {
+  console.log(randomNumber)
+  if (isNaN(userGuess) || (userGuess > 100) || (userGuess < 1) || userGuess.includes('.')) {
     warning.innerText = 'Incorrect input. Please enter a number between 1 and 100.'
+    lowOrHigh.innerText = ''
     return
   }
   if (1 <= userGuess <= 100) {
@@ -46,15 +48,14 @@ function isWin () {
 function turnTracker () {
   let userGuess = guessInput.value
   guessCount--
-  if (guessCount === 0) {
-    lowOrHigh.innerText = `Game over! You ran out of turns.`
+  if (guessCount >= 0 && userGuess == randomNumber) {
+    turnsLeft.innerText = ''
+  } else if (guessCount === 0) {
+    lowOrHigh.innerText = `Game over! You ran out of turns. The number was ${randomNumber}.`
     turnsLeft.innerText = ''
     toggleButtons('submit');
   } else {
     turnsLeft.innerText = `Turns left: ${guessCount}`
-  }
-  if (userGuess == randomNumber) {
-    turnsLeft.innerText = ''
   }
 }
 
@@ -71,7 +72,6 @@ function toggleButtons () {
   playAgainButton.style.display = 'none'
 }
 }
-
 
 submitButton.addEventListener('click', button => {
   logGuess()

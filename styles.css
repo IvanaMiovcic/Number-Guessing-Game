@@ -1,19 +1,25 @@
 html, body {
   margin: 0px;
   padding: 0px;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-  background: linear-gradient(to right, #0AF, #00FF6C)
+  background-image: -webkit-linear-gradient(0deg, #0AF, #00FF6C);
 }
 
 .box {
   height: 500px;
   width: 80%;
-  margin: 100px auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.8);
   text-align: center;
+
 }
 
 .inner {
@@ -24,8 +30,10 @@ body {
 }
 
 h1 {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
+  font-weight: 700;
+  font-size: 2.4em;
 }
 
 .intro {
@@ -35,8 +43,9 @@ h1 {
 
 p, label {
   color: white;
-font-family: sans-serif;
+font-family: 'Roboto', sans-serif;
 font-size: 18px;
+font-weight: 400;
 }
 
 input {
@@ -61,6 +70,7 @@ button {
   background-color: #0AF;
   color: white;
   border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   display: inline-block;
 }
