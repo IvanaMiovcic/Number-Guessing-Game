@@ -7,11 +7,9 @@ const lowOrHigh = document.getElementById('lowOrHigh')
 const turnsLeft = document.getElementById('turnsLeft')
 const warning = document.getElementById('warning')
 
-
 var randomNumber = Math.floor(Math.random() * 100) +1;
 var guessCount = 7
 var alreadyGuessed = []
-
 
 function logGuess() {
   let userGuess = guessInput.value
@@ -37,7 +35,7 @@ function isWin () {
   if (userGuess == randomNumber) {
     lowOrHigh.innerText = `You guessed right! The correct number was ${randomNumber}.`
     turnsLeft.innerText = ''
-    toggleButtons('submit');
+    displayButtons(playAgainButton, submitButton);
   } else if (userGuess > randomNumber) {
     lowOrHigh.innerText = `Your guess was too high! Try again.`
   } else {
@@ -53,24 +51,25 @@ function turnTracker () {
   } else if (guessCount === 0) {
     lowOrHigh.innerText = `Game over! You ran out of turns. The number was ${randomNumber}.`
     turnsLeft.innerText = ''
-    toggleButtons('submit');
+    displayButtons(playAgainButton, submitButton);
   } else {
     turnsLeft.innerText = `Turns left: ${guessCount}`
   }
 }
 
-function reset () {
-  document.location.href = ''
+function setup () {
+  randomNumber = Math.floor(Math.random() * 100) +1;
+  guessCount = 7
+  alreadyGuessed = []
+  turnsLeft.innerText = ''
+  lowOrHigh.innerText = ''
+  guesses.innerText = ''
 }
 
-function toggleButtons () {
-  if (submitButton.style.display = 'inline-block') {
-    submitButton.style.display = 'none'
-    playAgainButton.style.display = 'inline-block'
-  } else {
-  submitButton.style.display = 'inline-block'
-  playAgainButton.style.display = 'none'
-}
+function displayButtons (display, hide) {
+    display.style.display = 'inline-block'
+    hide.style.display = 'none'
+
 }
 
 submitButton.addEventListener('click', button => {
@@ -78,5 +77,6 @@ submitButton.addEventListener('click', button => {
 })
 
 playAgainButton.addEventListener('click', button => {
-  reset()
+  setup()
+  displayButtons(submitButton, playAgainButton);
 })
