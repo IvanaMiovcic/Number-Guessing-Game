@@ -8,7 +8,7 @@ const turnsLeft = document.getElementById('turnsLeft')
 const warning = document.getElementById('warning')
 
 
-var randomNumber = Math.floor(Math.random() * 101);
+var randomNumber = Math.floor(Math.random() * 100) +1;
 var guessCount = 7
 var alreadyGuessed = []
 
