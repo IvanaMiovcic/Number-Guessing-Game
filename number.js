@@ -51,6 +51,7 @@ function turnTracker () {
   } else if (guessCount === 0) {
     lowOrHigh.innerText = `Game over! You ran out of turns. The number was ${randomNumber}.`
     turnsLeft.innerText = ''
+    guessInput.disabled = true;
     displayButtons(playAgainButton, submitButton);
   } else {
     turnsLeft.innerText = `Turns left: ${guessCount}`
@@ -61,6 +62,7 @@ function setup () {
   randomNumber = Math.floor(Math.random() * 100) +1;
   guessCount = 7
   alreadyGuessed = []
+  guessInput.disabled = false;
   turnsLeft.innerText = ''
   lowOrHigh.innerText = ''
   guesses.innerText = ''
@@ -69,7 +71,6 @@ function setup () {
 function displayButtons (display, hide) {
     display.style.display = 'inline-block'
     hide.style.display = 'none'
-
 }
 
 submitButton.addEventListener('click', button => {
@@ -79,4 +80,13 @@ submitButton.addEventListener('click', button => {
 playAgainButton.addEventListener('click', button => {
   setup()
   displayButtons(submitButton, playAgainButton);
+})
+
+document.addEventListener('keydown', logKey => {
+    var x = event.keyCode
+    if (x == 13 && guessInput.disabled == false) {
+      logGuess()
+    } else {
+      return
+    }
 })
